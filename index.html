@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Simulador de Impacto</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Simulador de Impacto</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>Simule seu impacto no meio ambiente</h1>
+<div class="container">
 
-<p>Escolha suas ações:</p>
+<h1>O FUTURO DO SEU BAIRRO DEPENDE DE VOCÊ</h1>
 
-<div>
-  <button onclick="acao(20)">Jogar lixo em terreno</button>
-  <button onclick="acao(25)">Fazer queimadas</button>
-  <button onclick="acao(-20)">Descartar corretamente</button>
-  <button onclick="acao(-15)">Economizar água</button>
+<p>Escolha suas atitudes e observe o impacto</p>
+
+<div class="barra">
+  <div id="progresso"></div>
 </div>
 
-<h2 id="impacto">Impacto: 50</h2>
-<h2 id="estado">⚠️ Atenção</h2>
+<h2 id="estado">⚠️ Situação atual</h2>
+
+<div class="botoes">
+  <button onclick="acao(15)">Jogar lixo no terreno</button>
+  <button onclick="acao(20)">Fazer queimadas</button>
+  <button onclick="acao(-15)">Descartar corretamente</button>
+  <button onclick="acao(-10)">Economizar água</button>
+</div>
+
+<p id="mensagem"></p>
+
+</div>
 
 <script src="script.js"></script>
 
