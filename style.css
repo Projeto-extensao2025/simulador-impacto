@@ -1,0 +1,24 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.baixo {
+  background-color: #a8e6cf;
+}
+
+.medio {
+  background-color: #ffd3b6;
+}
+
+.critico {
+  background-color: #ff8b94;
+}
+``
