@@ -10,32 +10,35 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.7);
 }
 
 .container {
   position: relative;
-  max-width: 900px;
-  height: 100vh; /* 🔥 força caber na tela */
+  max-width: 800px;
   margin: auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  z-index: 2;
 }
 
-/* título menor */
+/* Ajuste de espaçamento */
 h1 {
   font-size: 22px;
   margin-bottom: 10px;
 }
 
-/* barra mais fina */
+#pergunta {
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+/* barra */
 .barra {
+  width: 100%;
   height: 12px;
   background: #333;
   border-radius: 10px;
-  overflow: hidden;
+  margin-bottom: 15px;
 }
 
 #progresso {
@@ -44,31 +47,33 @@ h1 {
   background: limegreen;
 }
 
-/* pergunta */
-#pergunta {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-/* botões mais compactos */
-button {
-  padding: 8px;
-  margin: 5px;
+/* botões de resposta */
+#opcoes button {
+  display: block;
+  margin: 8px auto;
   width: 90%;
-  font-size: 13px;
-  border-radius: 6px;
+  padding: 10px;
 }
 
-/* feedback menor */
+/* feedback */
 #feedback {
   font-size: 16px;
+  margin-top: 10px;
 }
 
 #explicacao {
-  font-size: 13px;
+  font-size: 14px;
+  opacity: 0.85;
 }
 
-/* rodapé */
+/* navegação */
 .botoes button {
   width: 30%;
+  margin-top: 10px;
+}
+
+/* RESPONSIVIDADE (ESSA É A CHAVE 🔥) */
+@media (max-height: 600px) {
+  #pergunta { font-size: 15px; }
+  button { font-size: 12px; padding: 6px; }
 }
