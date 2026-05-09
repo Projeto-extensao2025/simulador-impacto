@@ -1,42 +1,35 @@
-<!DOCTYPE html><!DOCTYPE html8">
-<title>Simulador de Impacto</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Ambiental</title>
 
-<link rel="stylesheet" href="style.css">
+style.css
 
 </head>
 <body>
 
 <div class="container">
 
-<h1>O FUTURO DO SEU BAIRRO DEPENDE DE VOCÊ</h1>
+<h1>Você sabe o impacto das suas escolhas?</h1>
 
-<p>Escolha suas atitudes e veja o impacto:</p>
+<h2 id="pergunta">Pergunta aqui</h2>
 
-<!-- Barra de impacto -->
-<div class="barra">
-  <div id="progresso"></div>
+<div id="opcoes"></div>
+
+<p id="feedback"></p>
+
+<div class="controles">
+  <button onclick="voltar()">Voltar</button>
+  <button onclick="proxima()">Próxima</button>
+  <button onclick="encerrar()">Encerrar</button>
 </div>
 
-<!-- Status -->
-<h2 id="estado">⚠️ Situação inicial</h2>
-
-<!-- Botões -->
-<div class="botoes">
-  <button onclick="acao(15)">Jogar lixo</button>
-  <button onclick="acao(20)">Queimada</button>
-  <button onclick="acao(-15)">Descarte correto</button>
-  <button onclick="acao(-10)">Economizar água</button>
-</div>
-
-<!-- Mensagem -->
-<p id="mensagem">Clique para iniciar o simulador</p>
+<p id="progresso"></p>
 
 </div>
 
-<script src="script.js"></script>
+script.js></script>
 
 </body>
 </html>
-``
-<html lang="pt-BR">
-<head>
