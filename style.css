@@ -1,24 +1,34 @@
 body {
+  margin: 0;
   font-family: Arial;
   text-align: center;
-  transition: background 0.3s;
+  color: white;
+  transition: background 0.5s;
+}
+
+.container {
+  padding: 30px;
+}
+
+.barra {
+  width: 80%;
+  height: 25px;
+  background: #444;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+#progresso {
+  height: 100%;
+  width: 50%;
+  background: green;
+  border-radius: 10px;
+  transition: 0.5s;
 }
 
 button {
-  padding: 10px;
+  padding: 12px;
   margin: 10px;
-  font-size: 16px;
+  font-size: 14px;
+  cursor: pointer;
 }
-
-.baixo {
-  background-color: #a8e6cf;
-}
-
-.medio {
-  background-color: #ffd3b6;
-}
-
-.critico {
-  background-color: #ff8b94;
-}
-``
