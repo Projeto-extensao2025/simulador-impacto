@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Quiz Ambiental</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
-<div class="container">
+<div class="overlay"></div>
+
+<div class="container fade">
 
 <h1>Você sabe o impacto das suas escolhas?</h1>
 
 <div class="barra">
-  <div id="progresso"></div>
+<div id="progresso"></div>
 </div>
 
 <h2 id="pergunta"></h2>
@@ -25,9 +25,9 @@
 <p id="explicacao"></p>
 
 <div class="botoes">
-  <button onclick="voltar()">Voltar</button>
-  <button onclick="proxima()">Próxima</button>
-  <button onclick="encerrar()">Encerrar</button>
+<button onclick="voltar()">◀ Voltar</button>
+<button onclick="proxima()">Próxima ▶</button>
+<button onclick="encerrar()">Encerrar</button>
 </div>
 
 <p id="contador"></p>
