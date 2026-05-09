@@ -1,87 +1,86 @@
 let perguntas = [
-
+// (use o mesmo array melhorado que te mandei — mantive aqui resumido)
 {
 pergunta: "Quantas sacolas plásticas uma pessoa pode usar por ano no Brasil?",
 opcoes: ["Menos de 50", "Cerca de 300", "Mais de 1000"],
 correta: 2,
-explicacao: "O consumo pode ultrapassar 1000 sacolas por pessoa ao ano, muitas usadas por poucos minutos."
+explicacao: "O consumo pode ultrapassar 1000 sacolas por pessoa ao ano."
 },
-
 {
-pergunta: "Quanto tempo uma sacola plástica leva para desaparecer na natureza?",
+pergunta: "Quanto tempo uma sacola leva para desaparecer?",
 opcoes: ["1 ano", "10 anos", "Mais de 100 anos"],
 correta: 2,
-explicacao: "Sacolas plásticas podem permanecer no ambiente por mais de um século."
+explicacao: "Pode levar séculos para se decompor."
 },
-
 {
-pergunta: "Uma torneira pingando pode desperdiçar por dia:",
-opcoes: ["5 litros", "20 litros", "Mais de 40 litros"],
+pergunta: "Uma torneira pingando desperdiça:",
+opcoes: ["5L", "20L", "40L+"],
 correta: 2,
-explicacao: "Pequenos vazamentos podem desperdiçar dezenas de litros diariamente."
+explicacao: "Pequenos vazamentos geram grande desperdício."
 },
-
 {
-pergunta: "Queimar lixo doméstico libera:",
-opcoes: ["Fumaça inofensiva", "Poluentes tóxicos", "Oxigênio"],
+pergunta: "Queimar lixo gera:",
+opcoes: ["Nada", "Poluentes tóxicos", "Oxigênio"],
 correta: 1,
-explicacao: "A queima libera gases tóxicos prejudiciais ao meio ambiente e à saúde."
+explicacao: "Libera gases prejudiciais."
 },
-
 {
-pergunta: "Quanto lixo orgânico o Brasil gera por ano?",
-opcoes: ["Menos de 1 milhão", "Cerca de 37 milhões", "Mais de 100 milhões"],
+pergunta: "Lixo orgânico anual no Brasil:",
+opcoes: ["<1M", "37M", ">100M"],
 correta: 1,
-explicacao: "Grande parte desse lixo poderia ser reaproveitada, mas não é."
+explicacao: "Muitos poderiam ser reaproveitados."
 },
-
 {
-pergunta: "Deixar luzes acesas sem necessidade causa:",
-opcoes: ["Nenhum impacto", "Aumento de consumo", "Economia de energia"],
+pergunta: "Energia desperdiçada causa:",
+opcoes: ["Nada", "Mais impacto", "Benefícios"],
 correta: 1,
-explicacao: "Mais consumo de energia aumenta emissões e impacto ambiental."
+explicacao: "Aumenta emissões ambientais."
 },
-
 {
-pergunta: "Jogar lixo em terrenos resulta em:",
-opcoes: ["Nada acontece", "Acúmulo e poluição", "Reciclagem natural"],
+pergunta: "Lixo em terreno causa:",
+opcoes: ["Nada", "Poluição", "Reciclagem"],
 correta: 1,
-explicacao: "O lixo se acumula e contamina o ambiente."
+explicacao: "Contamina o ambiente."
 },
-
 {
-pergunta: "Grande parte do plástico descartado:",
-opcoes: ["É reciclado", "Vai para o ambiente", "Desaparece"],
+pergunta: "Plástico descartado:",
+opcoes: ["Reciclado", "Vai à natureza", "Sumiu"],
 correta: 1,
-explicacao: "Boa parte do plástico não é reciclada corretamente."
+explicacao: "Grande parte não é reciclada."
 },
-
 {
-pergunta: "Uma garrafa plástica pode levar para se decompor:",
-opcoes: ["5 anos", "50 anos", "Mais de 400 anos"],
+pergunta: "Garrafa plástica dura:",
+opcoes: ["5 anos", "50 anos", "400+ anos"],
 correta: 2,
-explicacao: "Plásticos podem levar séculos para desaparecer."
+explicacao: "Permanece por séculos."
 },
-
 {
-pergunta: "O maior impacto ambiental vem de:",
-opcoes: ["Ações isoladas", "Pequenos hábitos diários", "Eventos raros"],
+pergunta: "Maior impacto vem de:",
+opcoes: ["Eventos", "Ações diárias", "Acasos"],
 correta: 1,
-explicacao: "Pequenas ações repetidas geram grandes impactos coletivos."
+explicacao: "Repetição gera impacto."
 }
-
 ];
 
 let atual = 0;
 let pontos = 0;
 let respondeu = false;
 
-function carregar() {
+function atualizarFundo(acertou) {
+if (acertou) {
+document.body.style.background =
+"url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e') center/cover";
+}
+else {
+document.body.style.background =
+"url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') center/cover";
+}
+}
 
+function carregar() {
 respondeu = false;
 
 let p = perguntas[atual];
-
 document.getElementById("pergunta").innerText = p.pergunta;
 
 let opDiv = document.getElementById("opcoes");
@@ -90,9 +89,7 @@ opDiv.innerHTML = "";
 p.opcoes.forEach((opcao, i) => {
 let btn = document.createElement("button");
 btn.innerText = opcao;
-
 btn.onclick = () => responder(btn, i);
-
 opDiv.appendChild(btn);
 });
 
@@ -100,12 +97,10 @@ document.getElementById("feedback").innerText = "";
 document.getElementById("explicacao").innerText = "";
 
 document.getElementById("contador").innerText =
-`Pergunta ${atual+1} de ${perguntas.length}`;
+`${atual+1}/${perguntas.length}`;
 
-// barra progresso
-let progresso = document.getElementById("progresso");
-progresso.style.width = ((atual) / perguntas.length * 100) + "%";
-
+document.getElementById("progresso").style.width =
+(atual/perguntas.length)*100 + "%";
 }
 
 function responder(botao, escolha) {
@@ -116,42 +111,50 @@ respondeu = true;
 let correta = perguntas[atual].correta;
 let botoes = document.querySelectorAll("#opcoes button");
 
-botoes.forEach((b, i) => {
-if (i === correta) b.classList.add("correto");
-else if (i === escolha) b.classList.add("errado");
+botoes.forEach((b,i)=>{
+if(i === correta) b.classList.add("correto");
+else if(i === escolha) b.classList.add("errado");
 });
 
-if (escolha === correta) {
-document.getElementById("feedback").innerText = "✅ Correto";
+let acertou = escolha === correta;
+
+if(acertou){
 pontos++;
+document.getElementById("feedback").innerText = "✅ Correto";
 } else {
 document.getElementById("feedback").innerText = "❌ Errado";
 }
+
+atualizarFundo(acertou);
 
 document.getElementById("explicacao").innerText =
 perguntas[atual].explicacao;
 }
 
-function proxima() {
-if (atual < perguntas.length - 1) {
+function proxima(){
+if(atual < perguntas.length-1){
 atual++;
+document.querySelector(".container").classList.remove("fade");
+setTimeout(()=>{
+document.querySelector(".container").classList.add("fade");
 carregar();
+},200);
 }
 }
 
-function voltar() {
-if (atual > 0) {
+function voltar(){
+if(atual > 0){
 atual--;
 carregar();
 }
 }
 
-function encerrar() {
+function encerrar(){
 
 let nivel = "";
 
-if (pontos <= 4) nivel = "⚠️ Baixo conhecimento";
-else if (pontos <= 7) nivel = "👍 Consciente";
+if(pontos <= 4) nivel = "⚠️ Baixo conhecimento";
+else if(pontos <= 7) nivel = "👍 Consciente";
 else nivel = "🌿 Agente ambiental";
 
 document.querySelector(".container").innerHTML = `
