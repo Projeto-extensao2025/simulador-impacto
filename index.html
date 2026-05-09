@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Quiz Ambiental</title>
 
-style.css
+<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -13,23 +13,28 @@ style.css
 
 <h1>Você sabe o impacto das suas escolhas?</h1>
 
-<h2 id="pergunta">Pergunta aqui</h2>
+<div class="barra">
+  <div id="progresso"></div>
+</div>
+
+<h2 id="pergunta"></h2>
 
 <div id="opcoes"></div>
 
 <p id="feedback"></p>
+<p id="explicacao"></p>
 
-<div class="controles">
+<div class="botoes">
   <button onclick="voltar()">Voltar</button>
   <button onclick="proxima()">Próxima</button>
   <button onclick="encerrar()">Encerrar</button>
 </div>
 
-<p id="progresso"></p>
+<p id="contador"></p>
 
 </div>
 
-script.js></script>
+<script src="script.js"></script>
 
 </body>
 </html>
