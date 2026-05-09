@@ -1,21 +1,42 @@
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(#111, #000);
+  font-family: "Segoe UI", Arial;
   color: white;
   text-align: center;
+  background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64") center/cover no-repeat;
+  transition: 1s;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
 }
 
 .container {
-  max-width: 700px;
+  position: relative;
+  max-width: 750px;
   margin: auto;
-  padding: 30px;
+  padding: 40px;
+  z-index: 2;
 }
 
+.fade {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* BARRA */
 .barra {
   width: 100%;
   height: 20px;
-  background: #444;
+  background: #333;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -24,42 +45,51 @@ body {
 #progresso {
   height: 100%;
   width: 0%;
-  background: limegreen;
-  transition: width 0.5s ease;
+  background: linear-gradient(90deg, #00ff88, #00cc66);
+  box-shadow: 0 0 15px #00ff88;
+  transition: 0.5s;
 }
 
+/* BOTÕES */
 button {
-  padding: 12px;
+  padding: 14px;
   margin: 10px;
-  width: 80%;
-  font-size: 14px;
+  width: 85%;
+  font-size: 15px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  background: #eee;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.9);
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #ccc;
+  transform: scale(1.05);
+  background: white;
 }
 
 .correto {
-  background: green !important;
+  background: #2ecc71 !important;
   color: white;
 }
 
 .errado {
-  background: red !important;
+  background: #e74c3c !important;
   color: white;
 }
 
+/* TEXTO */
 #feedback {
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 22px;
+  margin-top: 20px;
 }
 
 #explicacao {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 10px;
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-weight: 600;
 }
