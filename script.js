@@ -1,73 +1,73 @@
 let perguntas = [
 
 {
-pergunta: "Quantas sacolas plásticas uma pessoa usa por ano no Brasil?",
-opcoes: ["Cerca de 50", "Cerca de 300", "Mais de 1000"],
+pergunta: "Quantas sacolas plásticas uma pessoa pode usar por ano no Brasil?",
+opcoes: ["Menos de 50", "Cerca de 300", "Mais de 1000"],
 correta: 2,
-explicacao: "O consumo de sacolas plásticas no Brasil é extremamente alto e acumula milhares por pessoa ao longo do tempo."
+explicacao: "O consumo pode ultrapassar 1000 sacolas por pessoa ao ano, muitas usadas por poucos minutos."
 },
 
 {
-pergunta: "Quanto tempo uma sacola leva para se decompor?",
+pergunta: "Quanto tempo uma sacola plástica leva para desaparecer na natureza?",
 opcoes: ["1 ano", "10 anos", "Mais de 100 anos"],
 correta: 2,
-explicacao: "Sacolas plásticas podem levar séculos para desaparecer completamente."
+explicacao: "Sacolas plásticas podem permanecer no ambiente por mais de um século."
 },
 
 {
 pergunta: "Uma torneira pingando pode desperdiçar por dia:",
 opcoes: ["5 litros", "20 litros", "Mais de 40 litros"],
 correta: 2,
-explicacao: "Pequenos vazamentos acumulam um grande desperdício ao longo do tempo."
+explicacao: "Pequenos vazamentos podem desperdiçar dezenas de litros diariamente."
 },
 
 {
-pergunta: "Queimar lixo gera:",
-opcoes: ["Ar limpo", "Poluentes perigosos", "Oxigênio"],
+pergunta: "Queimar lixo doméstico libera:",
+opcoes: ["Fumaça inofensiva", "Poluentes tóxicos", "Oxigênio"],
 correta: 1,
-explicacao: "Queimadas liberam gases tóxicos e poluentes prejudiciais à saúde."
+explicacao: "A queima libera gases tóxicos prejudiciais ao meio ambiente e à saúde."
 },
 
 {
-pergunta: "Separar lixo ajuda a:",
-opcoes: ["Poluir mais", "Reciclar materiais", "Aumentar resíduos"],
+pergunta: "Quanto lixo orgânico o Brasil gera por ano?",
+opcoes: ["Menos de 1 milhão", "Cerca de 37 milhões", "Mais de 100 milhões"],
 correta: 1,
-explicacao: "Separar corretamente facilita a reciclagem e reduz impacto ambiental."
+explicacao: "Grande parte desse lixo poderia ser reaproveitada, mas não é."
 },
 
 {
-pergunta: "Desperdício de alimentos gera:",
-opcoes: ["Menos impacto", "Mais lixo e poluição", "Economia"],
+pergunta: "Deixar luzes acesas sem necessidade causa:",
+opcoes: ["Nenhum impacto", "Aumento de consumo", "Economia de energia"],
 correta: 1,
-explicacao: "Alimentos descartados geram gases e desperdício de recursos."
+explicacao: "Mais consumo de energia aumenta emissões e impacto ambiental."
 },
 
 {
-pergunta: "Plástico descartado geralmente vai para:",
-opcoes: ["Reciclagem imediata", "Rios e oceanos", "Desaparece"],
+pergunta: "Jogar lixo em terrenos resulta em:",
+opcoes: ["Nada acontece", "Acúmulo e poluição", "Reciclagem natural"],
 correta: 1,
-explicacao: "Grande parte do plástico acaba em ambientes naturais."
+explicacao: "O lixo se acumula e contamina o ambiente."
 },
 
 {
-pergunta: "Uso excessivo de energia causa:",
-opcoes: ["Nenhum impacto", "Aumento de emissões", "Benefícios ambientais"],
+pergunta: "Grande parte do plástico descartado:",
+opcoes: ["É reciclado", "Vai para o ambiente", "Desaparece"],
 correta: 1,
-explicacao: "Mais energia consumida = mais impacto ambiental."
+explicacao: "Boa parte do plástico não é reciclada corretamente."
 },
 
 {
-pergunta: "Jogar lixo em terreno leva a:",
-opcoes: ["Nada", "Acúmulo e poluição", "Limpeza natural"],
-correta: 1,
-explicacao: "Resíduos acumulam e degradam o ambiente."
+pergunta: "Uma garrafa plástica pode levar para se decompor:",
+opcoes: ["5 anos", "50 anos", "Mais de 400 anos"],
+correta: 2,
+explicacao: "Plásticos podem levar séculos para desaparecer."
 },
 
 {
-pergunta: "O maior impacto vem de:",
-opcoes: ["Uma ação só", "Pequenas ações repetidas", "Eventos raros"],
+pergunta: "O maior impacto ambiental vem de:",
+opcoes: ["Ações isoladas", "Pequenos hábitos diários", "Eventos raros"],
 correta: 1,
-explicacao: "O impacto coletivo vem da repetição diária."
+explicacao: "Pequenas ações repetidas geram grandes impactos coletivos."
 }
 
 ];
@@ -102,7 +102,7 @@ document.getElementById("explicacao").innerText = "";
 document.getElementById("contador").innerText =
 `Pergunta ${atual+1} de ${perguntas.length}`;
 
-// barra
+// barra progresso
 let progresso = document.getElementById("progresso");
 progresso.style.width = ((atual) / perguntas.length * 100) + "%";
 
@@ -122,10 +122,10 @@ else if (i === escolha) b.classList.add("errado");
 });
 
 if (escolha === correta) {
-document.getElementById("feedback").innerText = "✅ Correto!";
+document.getElementById("feedback").innerText = "✅ Correto";
 pontos++;
 } else {
-document.getElementById("feedback").innerText = "❌ Errado!";
+document.getElementById("feedback").innerText = "❌ Errado";
 }
 
 document.getElementById("explicacao").innerText =
