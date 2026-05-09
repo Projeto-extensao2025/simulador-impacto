@@ -115,9 +115,9 @@ function responder(escolha) {
 
   if (escolha === correta) {
     pontos++;
-    document.getElementById("feedback").innerText = "✅ Correto";
+    document.getElementById("feedback").innerText = "✅ Resposta correta";
   } else {
-    document.getElementById("feedback").innerText = "❌ Errado";
+    document.getElementById("feedback").innerText = "❌ Não é a melhor resposta";
   }
 
   document.getElementById("explicacao").innerText =
@@ -139,8 +139,40 @@ function voltar() {
 }
 
 function encerrar() {
-  document.querySelector(".container").innerHTML = `
-    <h1>Resultado Final</h1>
-    <p>Você acertou ${pontos} de ${perguntas.length}</p>
-  `;
+
+let nivel = "";
+let mensagem = "";
+
+// ranking bonito
+if (pontos <= 3) {
+  nivel = "🚨 Nível Crítico";
+  mensagem = "Seu nível de conhecimento ainda é baixo. Pequenas mudanças podem fazer grande diferença.";
+}
+else if (pontos <= 6) {
+  nivel = "⚠️ Nível Intermediário";
+  mensagem = "Você já tem alguma consciência, mas pode melhorar seus hábitos.";
+}
+else if (pontos <= 8) {
+  nivel = "👍 Nível Consciente";
+  mensagem = "Você está no caminho certo com boas práticas.";
+}
+else {
+  nivel = "🌿 Nível Sustentável";
+  mensagem = "Excelente! Suas escolhas estão alinhadas com sustentabilidade.";
+}
+
+// tela final
+document.querySelector(".container").innerHTML = `
+  <h1>Resultado Final</h1>
+  <h2>${nivel}</h2>
+  <p>${mensagem}</p>
+
+  <p><strong>Você acertou ${pontos} de ${perguntas.length}</strong></p>
+
+  <button onclick="reiniciar()">🔄 Fazer o teste novamente</button>
+`;
+}
+
+function reiniciar() {
+  location.reload();
 }
