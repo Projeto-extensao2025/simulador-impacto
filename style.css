@@ -4,7 +4,6 @@ body {
   color: white;
   text-align: center;
   background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64") center/cover no-repeat;
-  transition: 1s;
 }
 
 .overlay {
@@ -12,84 +11,64 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(6px);
 }
 
 .container {
   position: relative;
-  max-width: 750px;
+  max-width: 900px;
+  height: 100vh; /* 🔥 força caber na tela */
   margin: auto;
-  padding: 40px;
-  z-index: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.fade {
-  animation: fadeIn 0.6s ease;
+/* título menor */
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* BARRA */
+/* barra mais fina */
 .barra {
-  width: 100%;
-  height: 20px;
+  height: 12px;
   background: #333;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
 #progresso {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #00ff88, #00cc66);
-  box-shadow: 0 0 15px #00ff88;
-  transition: 0.5s;
+  background: limegreen;
 }
 
-/* BOTÕES */
+/* pergunta */
+#pergunta {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* botões mais compactos */
 button {
-  padding: 14px;
-  margin: 10px;
-  width: 85%;
-  font-size: 15px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.9);
-  transition: 0.3s;
+  padding: 8px;
+  margin: 5px;
+  width: 90%;
+  font-size: 13px;
+  border-radius: 6px;
 }
 
-button:hover {
-  transform: scale(1.05);
-  background: white;
-}
-
-.correto {
-  background: #2ecc71 !important;
-  color: white;
-}
-
-.errado {
-  background: #e74c3c !important;
-  color: white;
-}
-
-/* TEXTO */
+/* feedback menor */
 #feedback {
-  font-size: 22px;
-  margin-top: 20px;
+  font-size: 16px;
 }
 
 #explicacao {
-  font-size: 15px;
-  opacity: 0.85;
-  margin-bottom: 15px;
+  font-size: 13px;
 }
 
-h1 {
-  font-weight: 600;
+/* rodapé */
+.botoes button {
+  width: 30%;
 }
