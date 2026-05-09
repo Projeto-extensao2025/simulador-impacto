@@ -1,111 +1,73 @@
 let perguntas = [
+
 {
-pergunta: "Qual destes materiais é reciclável?",
-opcoes: ["Embalagem suja", "Garrafa PET", "Papel usado"],
+pergunta: "Qual destes materiais é reciclável na maioria dos sistemas urbanos?",
+opcoes: ["Embalagem suja", "Garrafa PET limpa", "Papel usado"],
 correta: 1,
 explicacao: "Materiais recicláveis devem estar limpos."
 },
+
 {
-pergunta: "Quanto tempo leva o plástico para se decompor?",
-opcoes: ["10 anos", "50 anos", "Mais de 400 anos"],
+pergunta: "Quanto tempo uma garrafa plástica pode levar para se decompor?",
+opcoes: ["Até 10 anos", "50 anos", "Mais de 400 anos"],
 correta: 2,
-explicacao: "Plástico pode durar séculos no ambiente."
+explicacao: "Plásticos podem levar séculos para desaparecer."
+},
+
+{
+pergunta: "Qual hábito mais desperdiça água?",
+opcoes: ["Fechar a torneira ao escovar", "Pequeno vazamento constante", "Usar balde"],
+correta: 1,
+explicacao: "Um vazamento pode desperdiçar dezenas de litros por dia."
+},
+
+{
+pergunta: "Qual desses NÃO costuma ser reciclável?",
+opcoes: ["Lata de alumínio", "Copo engordurado", "Garrafa de vidro"],
+correta: 1,
+explicacao: "Resíduos sujos dificultam reciclagem."
+},
+
+{
+pergunta: "Aparelhos em stand-by causam:",
+opcoes: ["Consumo de energia", "Nenhum impacto", "Economia"],
+correta: 0,
+explicacao: "Mesmo desligados, continuam consumindo energia."
+},
+
+{
+pergunta: "Qual resíduo demora mais para se decompor?",
+opcoes: ["Papel", "Plástico", "Orgânico"],
+correta: 1,
+explicacao: "Plástico leva muito mais tempo."
+},
+
+{
+pergunta: "Separar o lixo permite:",
+opcoes: ["Mais resíduos", "Reciclagem", "Eliminar lixo"],
+correta: 1,
+explicacao: "Facilita reaproveitamento."
+},
+
+{
+pergunta: "Qual atitude reduz mais energia?",
+opcoes: ["Luz ligada", "Uso consciente", "Abrir geladeira direto"],
+correta: 1,
+explicacao: "Uso consciente evita desperdício."
+},
+
+{
+pergunta: "Descarte incorreto pode causar:",
+opcoes: ["Só sujeira", "Contaminação", "Nada"],
+correta: 1,
+explicacao: "Pode gerar riscos ambientais e saúde."
+},
+
+{
+pergunta: "Pequenas ações são importantes porque:",
+opcoes: ["São fortes isoladas", "Se acumulam", "Substituem ações grandes"],
+correta: 1,
+explicacao: "Impacto coletivo vem da repetição."
 }
+
 ];
-
-let atual = 0;
-let pontos = 0;
-let respondeu = false;
-
-window.onload = function () {
-  try {
-    carregar();
-  } catch (erro) {
-    console.error("Erro ao iniciar:", erro);
-  }
-};
-
-function carregar() {
-  try {
-    respondeu = false;
-
-    let p = perguntas[atual];
-
-    // 🔥 proteção total
-    if (!p) {
-      console.error("Pergunta não encontrada");
-      return;
-    }
-
-    let perguntaEl = document.getElementById("pergunta");
-    let opDiv = document.getElementById("opcoes");
-
-    if (!perguntaEl || !opDiv) {
-      console.error("Elemento HTML não encontrado");
-      return;
-    }
-
-    perguntaEl.innerText = p.pergunta;
-
-    opDiv.innerHTML = "";
-
-    p.opcoes.forEach((opcao, i) => {
-      let btn = document.createElement("button");
-      btn.innerText = opcao;
-      btn.onclick = function () {
-        responder(i);
-      };
-      opDiv.appendChild(btn);
-    });
-
-    document.getElementById("feedback").innerText = "";
-    document.getElementById("explicacao").innerText = "";
-
-    let contador = document.getElementById("contador");
-    if (contador) {
-      contador.innerText = `Pergunta ${atual + 1} de ${perguntas.length}`;
-    }
-
-  } catch (erro) {
-    console.error("Erro no carregar:", erro);
-  }
-}
-
-function responder(escolha) {
-  if (respondeu) return;
-
-  respondeu = true;
-
-  let correta = perguntas[atual].correta;
-
-  if (escolha === correta) {
-    document.getElementById("feedback").innerText = "✅ Correto";
-    pontos++;
-  } else {
-    document.getElementById("feedback").innerText = "❌ Errado";
-  }
-
-  document.getElementById("explicacao").innerText =
-    perguntas[atual].explicacao;
-}
-
-function proxima() {
-  if (atual < perguntas.length - 1) {
-    atual++;
-    carregar();
-  }
-}
-
-function voltar() {
-  if (atual > 0) {
-    atual--;
-    carregar();
-  }
-}
-
-function encerrar() {
-  document.querySelector(".container").innerHTML = `
-    <h1>Resultado</h1>
-    <p>Você acertou ${pontos} de ${perguntas.length}</p>
-  `;
-}
