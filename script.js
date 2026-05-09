@@ -8,7 +8,7 @@ opcoes: [
 "Papel higiênico usado"
 ],
 correta: 1,
-explicacao: "Materiais recicláveis precisam estar limpos e secos para serem processados."
+explicacao: "Materiais recicláveis precisam estar limpos para serem processados."
 },
 
 {
@@ -19,18 +19,18 @@ opcoes: [
 "Mais de 400 anos"
 ],
 correta: 2,
-explicacao: "O plástico pode permanecer por séculos no meio ambiente."
+explicacao: "Plásticos podem levar séculos para desaparecer no ambiente."
 },
 
 {
-pergunta: "Qual destes hábitos mais contribui para o desperdício de água?",
+pergunta: "Qual hábito contribui mais para desperdício de água?",
 opcoes: [
 "Fechar a torneira ao escovar os dentes",
-"Deixar torneiras com pequenos vazamentos",
-"Usar balde para lavar o carro"
+"Deixar um pequeno vazamento",
+"Usar balde para limpeza"
 ],
 correta: 1,
-explicacao: "Pequenos vazamentos podem desperdiçar dezenas de litros por dia."
+explicacao: "Pequenos vazamentos podem desperdiçar muitos litros por dia."
 },
 
 {
@@ -41,29 +41,29 @@ opcoes: [
 "Garrafa de vidro"
 ],
 correta: 1,
-explicacao: "Contaminação por resíduos impede a reciclagem adequada."
+explicacao: "Resíduos sujos dificultam ou impedem o processo de reciclagem."
 },
 
 {
-pergunta: "Deixar aparelhos eletrônicos em stand-by impacta principalmente:",
+pergunta: "Deixar aparelhos em stand-by impacta principalmente:",
 opcoes: [
 "Aumento no consumo de energia",
-"Melhora da eficiência energética",
-"Nenhuma diferença significativa"
+"Nenhum efeito",
+"Economia de energia"
 ],
 correta: 0,
-explicacao: "O consumo em stand-by, quando somado, representa gasto energético relevante."
+explicacao: "Mesmo desligados, aparelhos consomem energia em modo stand-by."
 },
 
 {
-pergunta: "Qual desses resíduos leva mais tempo para se decompor?",
+pergunta: "Qual desses resíduos demora mais para se decompor?",
 opcoes: [
 "Papel",
 "Plástico",
 "Restos orgânicos"
 ],
 correta: 1,
-explicacao: "Papel e restos orgânicos se decompõem relativamente rápido em comparação ao plástico."
+explicacao: "Plásticos levam muito mais tempo que materiais orgânicos."
 },
 
 {
@@ -74,40 +74,152 @@ opcoes: [
 "Eliminar completamente o lixo"
 ],
 correta: 1,
-explicacao: "A separação adequada permite que materiais sejam reaproveitados."
+explicacao: "A separação é essencial para reaproveitamento de materiais."
 },
 
 {
-pergunta: "Qual hábito ajuda mais a reduzir o consumo de energia elétrica em casa?",
+pergunta: "Qual atitude ajuda mais a reduzir consumo de energia?",
 opcoes: [
-"Deixar luz acesa em ambientes vazios",
-"Utilizar eletrodomésticos de forma consciente",
-"Abrir a geladeira frequentemente"
+"Deixar luz ligada sem uso",
+"Usar energia de forma consciente",
+"Abrir geladeira com frequência"
 ],
 correta: 1,
-explicacao: "O uso consciente reduz desperdícios e impactos no consumo."
+explicacao: "Uso consciente reduz desperdício e impacto ambiental."
 },
 
 {
-pergunta: "O descarte incorreto de lixo em terrenos pode causar:",
+pergunta: "O descarte incorreto de lixo pode causar:",
 opcoes: [
 "Apenas impacto visual",
-"Contaminação do solo e proliferação de pragas",
-"Nenhum efeito relevante"
+"Contaminação e pragas",
+"Nenhum impacto"
 ],
 correta: 1,
-explicacao: "Além da poluição, há riscos à saúde e ao ambiente."
+explicacao: "Além de poluição, há riscos à saúde."
 },
 
 {
-pergunta: "Por que pequenas ações do dia a dia são importantes para o meio ambiente?",
+pergunta: "Por que pequenas ações são importantes?",
 opcoes: [
-"Porque geram impacto isolado elevado",
-"Porque, somadas, geram grande impacto",
-"Porque substituem ações maiores"
+"Porque têm impacto isolado alto",
+"Porque somadas geram grande impacto",
+"Porque substituem grandes ações"
 ],
 correta: 1,
 explicacao: "O impacto coletivo vem da repetição das ações."
 }
 
 ];
+
+let atual = 0;
+let pontos = 0;
+let respondeu = false;
+
+// 🔥 CARREGA QUIZ COM SEGURANÇA
+window.onload = function() {
+  carregar();
+};
+
+function carregar() {
+
+respondeu = false;
+
+let p = perguntas[atual];
+
+// ✅ garante que não quebra
+document.getElementById("pergunta").innerText = p.pergunta;
+
+let opDiv = document.getElementById("opcoes");
+opDiv.innerHTML = "";
+
+p.opcoes.forEach((opcao, i) => {
+
+let btn = document.createElement("button");
+btn.innerText = opcao;
+
+btn.onclick = function() {
+responder(btn, i);
+};
+
+opDiv.appendChild(btn);
+
+});
+
+document.getElementById("feedback").innerText = "";
+document.getElementById("explicacao").innerText = "";
+
+document.getElementById("contador").innerText =
+`Pergunta ${atual + 1} de ${perguntas.length}`;
+
+// barra
+let prog = document.getElementById("progresso");
+prog.style.width = (atual / perguntas.length * 100) + "%";
+
+}
+
+function responder(botao, escolha) {
+
+if (respondeu) return;
+respondeu = true;
+
+let correta = perguntas[atual].correta;
+let botoes = document.querySelectorAll("#opcoes button");
+
+botoes.forEach((b, i) => {
+
+if (i === correta) {
+b.classList.add("correto");
+}
+else if (i === escolha) {
+b.classList.add("errado");
+}
+
+});
+
+if (escolha === correta) {
+document.getElementById("feedback").innerText = "✅ Correto";
+pontos++;
+}
+else {
+document.getElementById("feedback").innerText = "❌ Errado";
+}
+
+document.getElementById("explicacao").innerText =
+perguntas[atual].explicacao;
+
+}
+
+function proxima() {
+
+if (atual < perguntas.length - 1) {
+atual++;
+carregar();
+}
+
+}
+
+function voltar() {
+
+if (atual > 0) {
+atual--;
+carregar();
+}
+
+}
+
+function encerrar() {
+
+let nivel = "";
+
+if (pontos <= 4) nivel = "⚠️ Baixo conhecimento";
+else if (pontos <= 7) nivel = "👍 Consciente";
+else nivel = "🌿 Alto nível de consciência";
+
+document.querySelector(".container").innerHTML = `
+<h1>Resultado Final</h1>
+<h2>${nivel}</h2>
+<p>Você acertou ${pontos} de ${perguntas.length}</p>
+`;
+
+}
